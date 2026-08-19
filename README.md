@@ -1,4 +1,3 @@
-# Lecture_Production_Tracker
 # Lecture Production Tracker
 
 A lightweight, static production control board for ISCI-630a complementary health lectures.
