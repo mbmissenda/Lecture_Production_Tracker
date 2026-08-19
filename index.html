@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A personal production control board for complementary health lectures.">
+  <title>Lecture Production Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#chapter-list">Skip to lectures</a>
+
+  <header class="site-header">
+    <div>
+      <p class="eyebrow">ISCI-630a production workspace</p>
+      <h1>Lecture Production Tracker</h1>
+      <p class="lede">See where every lecture stands and what productive work is available now.</p>
+    </div>
+    <div class="backup-actions" aria-label="Backup controls">
+      <button id="export-button" class="button secondary" type="button">Export backup</button>
+      <button id="import-button" class="button secondary" type="button">Import backup</button>
+      <input id="import-file" type="file" accept="application/json,.json" hidden>
+    </div>
+  </header>
+
+  <main>
+    <section class="course-summary" aria-labelledby="summary-heading">
+      <div class="summary-heading-row">
+        <div>
+          <p class="eyebrow">Course-level view</p>
+          <h2 id="summary-heading">Production overview</h2>
+        </div>
+        <div class="course-progress" id="course-progress"></div>
+      </div>
+      <dl id="summary-stats" class="summary-stats"></dl>
+    </section>
+
+    <section class="workspace" aria-labelledby="workspace-heading">
+      <div class="workspace-heading-row">
+        <div>
+          <p class="eyebrow">Actionable work</p>
+          <h2 id="workspace-heading">Work queues</h2>
+        </div>
+        <label class="toggle-control">
+          <input id="hide-completed" type="checkbox" checked>
+          <span>Hide completed chapters</span>
+        </label>
+      </div>
+
+      <div id="queue-controls" class="queue-controls" aria-label="Filter by work queue"></div>
+
+      <div class="work-type-row">
+        <label for="work-type-filter">Work type</label>
+        <select id="work-type-filter"></select>
+        <p id="filter-description" class="filter-description" aria-live="polite"></p>
+      </div>
+
+      <div class="chapter-heading-row">
+        <h2 id="chapter-list-heading">Lectures</h2>
+        <p id="result-count" aria-live="polite"></p>
+      </div>
+      <div id="chapter-list" class="chapter-list" aria-labelledby="chapter-list-heading"></div>
+      <p id="empty-state" class="empty-state" hidden>No lectures match these filters.</p>
+    </section>
+  </main>
+
+  <dialog id="chapter-dialog" class="chapter-dialog" aria-labelledby="dialog-title">
+    <form method="dialog" class="dialog-close-row">
+      <button class="button secondary" type="submit">Close</button>
+    </form>
+    <div id="chapter-detail"></div>
+  </dialog>
+
+  <div id="status-message" class="status-message" role="status" aria-live="polite"></div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
